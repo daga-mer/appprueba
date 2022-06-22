@@ -35,12 +35,6 @@ class Tablado extends Component {
                         <td>the Bird</td>
                         <td>@twitter</td>
                     </tr>
-                    <tr>
-                        <th scope="row">{this.id}</th>
-                        <td>{this.name}</td>
-                        <td>{this.lastName}</td>
-                        <td>{this.arroba}</td>
-                    </tr>
                 </tbody>
             </Table>
         )
