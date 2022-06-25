@@ -8,7 +8,6 @@ import {
 } from "reactstrap";
 import { Component } from "react";
 import Listado from "./Componentes/numberList.jsx";
-import Tablado from "./Componentes/TablaEditable.jsx";
 /* // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics"; */
@@ -58,6 +57,10 @@ class App extends Component {
     this.setState({ listId: event.target.value });
   }
 
+  /*   eliminarValor(event) {
+    this.setState({ listId: event.target.value });
+  }
+ */
   render() {
     return (
       <>
@@ -177,7 +180,7 @@ class App extends Component {
             </AccordionItem>
             <AccordionItem>
               <AccordionHeader targetId="4">
-                Listado en tiempo real
+                Listado actualizable
               </AccordionHeader>
               <AccordionBody accordionId="4">
                 <label>
@@ -206,12 +209,47 @@ class App extends Component {
                     var id = this.state.listId;
                     var valor = this.state.listVal;
                     var array = { id: id, titulo: valor };
+/* 
+                    for (let i = 0; i < this.state.varnumeros.length; i++) {
+                      if (this.state.varnumeros[i] === array[id]) {
+                        console.log("estado: ", this.state.varnumeros[i]);
+                      } else {
+                        console.log(
+                          "array: ",
+                          array,
+                          " ",
+                          this.state.varnumeros[i]
+                        );
+                      }
+                    } */
 
                     this.state.varnumeros.push(array);
                   }}
                 >
                   Agregar a la lista
                 </Button>
+
+                <hr />
+                {/* <label>
+                  Elimine valor de la lista:
+                  <input
+                    type="text"
+                    min={this.state.listId}
+                    value={this.state.listVal}
+                    onChange={this.eliminarValor}
+                  />
+                </label>
+                <Button
+                  style={{ margin: "1%" }}
+                  color="danger"
+                  onClick={() => {
+                    var id = this.state.listId;
+                    var valor = this.state.listVal;
+
+                    this.state.varnumeros.splice(id);
+                  }}>
+                  Eliminar de la lista
+                </Button> */}
 
                 <Listado numbers={this.state.varnumeros} />
               </AccordionBody>
@@ -220,8 +258,6 @@ class App extends Component {
         </div>
 
         <hr />
-
-        <Tablado />
       </>
     );
   }
